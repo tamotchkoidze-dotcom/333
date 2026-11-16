@@ -1,0 +1,219 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: #04132f;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: #17191c;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.site-header {
+  display: flex;
+  height: 58px;
+  align-items: center;
+  padding: 0 7px;
+  background: #04132f;
+}
+
+.wordmark {
+  color: #00c878;
+  font-size: clamp(1.35rem, 3.2vw, 2.45rem);
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
+.page {
+  min-height: calc(100vh - 58px);
+  padding: 0 3.4% 12px;
+  background:
+    radial-gradient(circle at 0 79%, rgba(11, 72, 196, 0.65) 1px, transparent 2px) 0 0 / 12px 12px,
+    #04132f;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: min(41vw, 540px);
+}
+
+.hero-color-panel {
+  position: absolute;
+  inset: 0 0 0 50%;
+  background: #cbd9c4;
+}
+
+.hero-photo {
+  position: absolute;
+  z-index: 1;
+  top: 9%;
+  left: 14.5%;
+  width: 47%;
+  height: 79%;
+  border: 12px solid #fff;
+  background: #eee;
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 36%;
+  filter: grayscale(1);
+}
+
+.photo-lines {
+  position: absolute;
+  right: 27%;
+  bottom: -14px;
+  left: -27%;
+  height: 44px;
+  background: repeating-linear-gradient(130deg, transparent 0 8px, #151515 8px 10px);
+  pointer-events: none;
+}
+
+.message-card {
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  left: 53.5%;
+  width: min(28%, 290px);
+  padding: 20px 22px 23px;
+  border: 9px solid #fff;
+  background: #e9e7e6;
+}
+
+.message-muted,
+.message-card h1 {
+  margin: 0;
+  font-family: Impact, "Arial Narrow", sans-serif;
+  font-size: clamp(1.35rem, 3vw, 2.2rem);
+  font-stretch: condensed;
+  line-height: 1.18;
+}
+
+.message-muted {
+  color: #747474;
+}
+
+.message-card h1 {
+  color: #17191c;
+}
+
+.appointment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 20px 0 0;
+  color: #505050;
+  font-size: clamp(0.55rem, 0.9vw, 0.75rem);
+}
+
+.appointment span {
+  font-size: 1.3rem;
+}
+
+.social-links {
+  position: absolute;
+  z-index: 3;
+  top: 40%;
+  right: 1.2%;
+  display: grid;
+  gap: 12px;
+}
+
+.social-links a {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  color: #101a12;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    height: 54px;
+    padding-left: 14px;
+  }
+
+  .page {
+    min-height: calc(100vh - 54px);
+    padding: 18px 14px 28px;
+  }
+
+  .hero {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    padding: 0 0 0 7%;
+  }
+
+  .hero-color-panel {
+    inset: 0 0 15% 28%;
+  }
+
+  .hero-photo {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 78%;
+    height: clamp(300px, 105vw, 460px);
+    margin: 22px 0 0 0;
+    border-width: 8px;
+  }
+
+  .photo-lines {
+    right: 15%;
+    bottom: -11px;
+    left: -16%;
+    height: 34px;
+  }
+
+  .message-card {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: min(82%, 330px);
+    margin: -58px 0 0 auto;
+    padding: 17px 18px 19px;
+    border-width: 7px;
+  }
+
+  .message-muted,
+  .message-card h1 {
+    font-size: clamp(1.45rem, 7vw, 2rem);
+  }
+
+  .appointment {
+    margin-top: 16px;
+    font-size: 0.68rem;
+  }
+
+  .social-links {
+    top: 26px;
+    right: 0;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-photo {
+    width: 84%;
+  }
+
+  .message-card {
+    width: 88%;
+  }
+}

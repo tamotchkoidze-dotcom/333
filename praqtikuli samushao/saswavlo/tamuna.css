@@ -1,0 +1,241 @@
+/* CSS Variables & Reset */
+:root {
+  --color-orange: #F74780;
+  --color-pink: #FFA7C4;
+  --color-purple: #666CA3;
+  --color-dark-navy: #13183F;
+  --color-grey: #83869A;
+  --color-white: #FFFFFF;
+  --font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-grey);
+  background-color: var(--color-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Utilities */
+.container {
+  width: 90%;
+  max-width: 1110px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-dark-navy);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 28px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-dark {
+  background-color: var(--color-dark-navy);
+  color: var(--color-white);
+}
+
+.btn-gradient {
+  background: linear-gradient(180deg, #FF6F48 0%, #F74780 100%);
+  color: var(--color-white);
+}
+
+/* Header */
+.header {
+  padding: 24px 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Hero Section */
+.hero {
+  padding: 20px 0 60px;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-content h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--color-dark-navy);
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.hero-content p {
+  font-size: 1.125rem;
+  margin-bottom: 36px;
+}
+
+.hero-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Courses Section */
+.courses {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0F1FF 100%);
+  padding: 60px 0 100px;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.course-card {
+  background-color: var(--color-white);
+  padding: 32px;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0px 18px 36px rgba(19, 24, 63, 0.05);
+  margin-top: 20px;
+}
+
+.highlight-card {
+  background: linear-gradient(180deg, #FF6F48 0%, #F74780 100%);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+}
+
+.highlight-card h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.3;
+}
+
+.course-card h4 {
+  font-size: 1.25rem;
+  color: var(--color-dark-navy);
+  margin: 24px 0 16px;
+}
+
+.course-card p {
+  margin-bottom: 24px;
+}
+
+.link-text {
+  color: var(--color-orange);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link-text:hover {
+  color: var(--color-pink);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--color-dark-navy);
+  padding: 40px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer .logo {
+  color: var(--color-white);
+}
+
+
+/* --- RESPONSIVE DESIGN (Media Queries) --- */
+
+/* Tablet Devices (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .hero-content h2 {
+    font-size: 2.8rem;
+  }
+  
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .hero-content h2 {
+    font-size: 2.5rem;
+  }
+
+  .hero-image {
+    margin-top: 20px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}
+
+/* Small Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .hero-content p, .course-card p {
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+}

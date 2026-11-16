@@ -1,0 +1,1368 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+Georgian:wght@400;500;600;700&family=Noto+Serif+Georgian:wght@400;500&display=swap");
+
+:root {
+  color-scheme: light;
+  --paper: #faf6ef;
+  --paper-deep: #f3ece1;
+  --ink: #30291f;
+  --muted: #8c8275;
+  --line: #e8dfd3;
+  --rust: #b7451d;
+  --rust-deep: #9f3515;
+  --serif: "Noto Serif Georgian", Georgia, serif;
+  --sans: "Noto Sans Georgian", Arial, sans-serif;
+  --mono: "DM Mono", "Courier New", monospace;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 68% 28%, #fffdf9 0, transparent 37rem),
+    var(--paper);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+.guest-dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 220px;
+  height: 100vh;
+  min-height: 620px;
+  padding: 28px 14px 20px;
+  border-right: 1px solid var(--line);
+  background: #f9f5ee;
+}
+
+.brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 76px;
+  padding: 0 4px 21px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 0.96;
+  text-decoration: none;
+}
+
+.brand-sun {
+  color: #d37826;
+  font-family: Georgia, serif;
+  font-size: 29px;
+  line-height: 0.8;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 16px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #4a433a;
+  font-size: 13px;
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  border-color: #f0c943;
+  background: #f7d857;
+  color: #30291f;
+  outline: none;
+}
+
+.nav-link.is-active {
+  background: #fffdfa;
+  box-shadow: 0 2px 6px #4c321008;
+}
+
+.nav-link svg {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.45;
+}
+
+.nav-alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  margin-left: auto;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--rust);
+  font-family: var(--mono);
+  font-size: 9px;
+}
+
+.weather-card {
+  position: relative;
+  overflow: hidden;
+  margin-top: auto;
+  padding: 13px 14px 12px;
+  border: 1px solid #f1d880;
+  border-radius: 12px;
+  background: linear-gradient(130deg, #f8df83, #f4d36c);
+  box-shadow: 0 4px 12px #9a6d1a12;
+}
+
+.weather-card p {
+  position: relative;
+  margin: 0;
+}
+
+.weather-label {
+  color: #725a26;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.weather-temperature {
+  margin-top: 2px !important;
+  font-family: var(--serif);
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.weather-summary {
+  margin-top: 3px !important;
+  color: #65562f;
+  font-size: 10px;
+}
+
+.weather-sun {
+  position: absolute;
+  top: -25px;
+  right: -9px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffeaa0, #efaa2f);
+  box-shadow: 0 0 22px #efaa2f70;
+}
+
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 13px 3px 0;
+  border-top: 1px dashed #e2d9cc;
+  color: #8a8074;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.055em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.sidebar-footer p {
+  margin: 0;
+}
+
+.main-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: min(100%, 1500px);
+  margin: 0 auto;
+  padding: 42px clamp(28px, 5vw, 88px) 56px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 65px;
+}
+
+.eyebrow,
+.receipt-footnote,
+.receipt-label,
+.receipt-number,
+.welcome-kicker,
+.welcome-room span,
+.info-category,
+.info-subtitle {
+  font-family: var(--mono);
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  margin: 0 0 7px;
+  color: #8d8174;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(29px, 3.2vw, 43px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.page-header h1 em {
+  color: var(--rust);
+  font-weight: 500;
+}
+
+.hero-description {
+  max-width: 430px;
+  margin: 10px 0 0;
+  color: #756b60;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.hero-description strong {
+  display: block;
+  color: var(--rust);
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 23px);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.hero-description span {
+  display: block;
+  margin-top: 5px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:focus-visible {
+  outline: 2px solid #d4723e;
+  outline-offset: 3px;
+}
+
+.button-outline {
+  border-color: #e7dfd4;
+  background: #fffdf9;
+  color: var(--ink);
+}
+
+.button-outline:hover,
+.button-outline:focus-visible {
+  border-color: #f0c943;
+  background: #f7d857;
+  color: #30291f;
+}
+
+.button-dark {
+  border-color: #3a3025;
+  background: #3a3025;
+  color: #fffaf2;
+}
+
+.button-dark:hover,
+.button-dark:focus-visible {
+  border-color: #f0c943;
+  background: #f7d857;
+  color: #30291f;
+}
+
+.stay-overview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: min(100%, 990px);
+  min-height: 390px;
+  margin: 25px auto 34px;
+  padding: 16px 18px 34px;
+  perspective: 1000px;
+}
+
+.receipt-card,
+.welcome-card {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 296px;
+  box-shadow: 0 15px 26px #49351d14, 0 3px 8px #49351d0a;
+  transition: transform 420ms cubic-bezier(0.2, 0.75, 0.25, 1), box-shadow 420ms ease;
+}
+
+.receipt-card {
+  z-index: 1;
+  padding: 24px 24px 19px;
+  border: 1px solid #f0e9df;
+  border-radius: 15px;
+  background:
+    linear-gradient(#ffffffd9, #ffffffd9),
+    repeating-linear-gradient(0deg, #e5ddd2 0, #e5ddd2 1px, transparent 1px, transparent 27px);
+  transform: rotate(-3deg) translateX(12px);
+}
+
+.receipt-heading,
+.stay-dates,
+.receipt-lines p,
+.receipt-total,
+.receipt-barcode {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.receipt-heading {
+  align-items: flex-start;
+}
+
+.receipt-label {
+  margin: 0;
+  color: #92877b;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+}
+
+.receipt-heading h2 {
+  margin: 5px 0 0;
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.receipt-number {
+  margin: 0;
+  color: #9b9186;
+  font-size: 7px;
+  line-height: 1.65;
+  text-align: right;
+}
+
+.stay-dates {
+  gap: 12px;
+  margin-top: 24px;
+  padding: 13px 0 12px;
+  border-top: 1px dashed #ddd4c8;
+  border-bottom: 1px dashed #ddd4c8;
+  text-align: center;
+}
+
+.stay-dates > div {
+  flex: 1;
+}
+
+.date {
+  margin: 4px 0 1px;
+  font-family: var(--serif);
+  font-size: 25px;
+  line-height: 1.1;
+}
+
+.date-note {
+  margin: 0;
+  color: #8f857a;
+  font-size: 9px;
+}
+
+.receipt-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 14px 0 12px;
+  border-bottom: 1px solid #d9cfc2;
+  font-size: 9px;
+}
+
+.receipt-lines p {
+  gap: 8px;
+  margin: 0;
+}
+
+.receipt-lines p span:last-child {
+  white-space: nowrap;
+}
+
+.receipt-total {
+  padding: 10px 0 8px;
+}
+
+.receipt-total strong {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.receipt-footnote {
+  margin: 9px 0 0;
+  color: #8f857a;
+  font-size: 7px;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-transform: none;
+}
+
+.receipt-barcode {
+  align-items: flex-end;
+  padding-top: 8px;
+}
+
+.barcode {
+  width: 63px;
+  height: 22px;
+  background: repeating-linear-gradient(
+    90deg,
+    #41382e 0,
+    #41382e 1px,
+    transparent 1px,
+    transparent 3px,
+    #41382e 3px,
+    #41382e 5px,
+    transparent 5px,
+    transparent 7px
+  );
+}
+
+.sun-illustration {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 0 0 74px;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+  height: 74px;
+  color: #c8582d;
+}
+
+.sun-illustration::before {
+  position: absolute;
+  width: 2px;
+  height: 64px;
+  background: currentColor;
+  content: "";
+}
+
+.sun-illustration::after {
+  position: absolute;
+  width: 64px;
+  height: 2px;
+  background: currentColor;
+  content: "";
+}
+
+.sun-illustration span {
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  border: 3px solid #c8582d;
+  border-radius: 50%;
+  background: #f7d27b;
+  box-shadow: 0 0 0 4px var(--paper);
+}
+
+.welcome-card {
+  z-index: 3;
+  min-height: 296px;
+  padding: 24px 25px 20px;
+  border-radius: 16px;
+  color: #fff5e8;
+  background: linear-gradient(145deg, #d66b36, #b84720 72%, #9f3719);
+  transform: rotate(-6deg) translateX(-8px);
+}
+
+.welcome-card::after {
+  position: absolute;
+  inset: 9px;
+  border: 1px dashed #fff3df40;
+  border-radius: 10px;
+  content: "";
+  pointer-events: none;
+}
+
+.welcome-sun {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  color: #f7d681;
+  font-family: Georgia, serif;
+  font-size: 30px;
+}
+
+.welcome-kicker {
+  margin: 1px 0 35px;
+  color: #ffddc6;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.welcome-intro {
+  margin: 0;
+  color: #f6d5bd;
+  font-family: var(--serif);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.welcome-card h2 {
+  margin: 1px 0 12px;
+  font-family: var(--serif);
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.welcome-message {
+  max-width: 280px;
+  margin: 0;
+  color: #fff0e4;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.welcome-room {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 22px;
+}
+
+.welcome-room span {
+  color: #f3c7a9;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.welcome-room strong {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.stay-overview:hover .receipt-card {
+  transform: rotate(-8deg) translate(-9px, 4px);
+}
+
+.stay-overview:hover .welcome-card {
+  transform: rotate(4deg) translate(9px, -4px);
+}
+
+.fan-hint {
+  position: absolute;
+  right: 0;
+  bottom: 3px;
+  left: 0;
+  margin: 0;
+  color: #a2988c;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.fan-hint span {
+  padding: 0 5px;
+  color: var(--rust);
+}
+
+.info-grid {
+  display: flex;
+  gap: 18px;
+}
+
+.info-card {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 204px;
+  padding: 19px 19px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fffdfa;
+  box-shadow: 0 7px 18px #49351d09;
+  scroll-margin-top: 24px;
+}
+
+.info-topline {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.info-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 29px;
+  height: 29px;
+  flex: 0 0 29px;
+  border-radius: 8px;
+  color: white;
+}
+
+.info-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.icon-arrival {
+  background: #bd4d26;
+}
+
+.icon-wifi {
+  background: #596bb8;
+}
+
+.icon-breakfast {
+  background: #c95175;
+}
+
+.info-category {
+  color: #a74727;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+}
+
+#system .info-category,
+#system .info-number {
+  color: #5266b4;
+}
+
+#maintenance .info-category,
+#maintenance .info-number {
+  color: #bd4a70;
+}
+
+.info-number {
+  margin-left: auto;
+  color: #b84a28;
+  font-family: var(--serif);
+  font-size: 20px;
+}
+
+.info-card h2 {
+  margin: 15px 0 4px;
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.45vw, 21px);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.info-subtitle {
+  margin: 0;
+  color: #8e8479;
+  font-size: 8px;
+  letter-spacing: 0.07em;
+  text-transform: none;
+}
+
+.info-description {
+  margin: 11px 0 0;
+  color: #625a51;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.wifi-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.wifi-details p {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 24px;
+  margin: 0;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: #f4f0e9;
+  font-size: 9px;
+}
+
+.wifi-details p > span {
+  color: #8e8479;
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.wifi-details strong {
+  font-size: 9px;
+  font-weight: 500;
+}
+
+@media (min-width: 1450px) {
+  .main-content {
+    padding-top: 56px;
+  }
+
+  .stay-overview {
+    min-height: 440px;
+    margin-top: 35px;
+  }
+
+  .receipt-card,
+  .welcome-card {
+    min-height: 330px;
+    padding: 29px;
+  }
+
+  .stay-dates {
+    margin-top: 30px;
+  }
+
+  .welcome-kicker {
+    margin-bottom: 45px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .sidebar {
+    flex-basis: 190px;
+  }
+
+  .main-content {
+    padding-right: 28px;
+    padding-left: 28px;
+  }
+
+  .stay-overview {
+    gap: 8px;
+  }
+
+  .sun-illustration {
+    flex-basis: 48px;
+  }
+
+  .receipt-card {
+    padding-right: 17px;
+    padding-left: 17px;
+  }
+
+  .welcome-card {
+    padding-right: 19px;
+    padding-left: 19px;
+  }
+
+  .info-grid {
+    gap: 12px;
+  }
+
+  .info-card {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+}
+
+@media (max-width: 780px) {
+  .sidebar {
+    flex-basis: 142px;
+  }
+
+  .sidebar {
+    padding: 19px 9px 14px;
+  }
+
+  .brand {
+    min-height: 57px;
+    padding-bottom: 13px;
+    font-size: 16px;
+  }
+
+  .brand-sun {
+    font-size: 24px;
+  }
+
+  .sidebar-nav {
+    gap: 2px;
+    padding-top: 11px;
+  }
+
+  .nav-link {
+    gap: 7px;
+    min-height: 33px;
+    padding: 0 6px;
+    font-size: 10px;
+  }
+
+  .nav-link svg {
+    width: 13px;
+    height: 13px;
+    flex-basis: 13px;
+  }
+
+  .nav-alert {
+    width: 13px;
+    height: 13px;
+    font-size: 8px;
+  }
+
+  .weather-card {
+    padding: 10px;
+  }
+
+  .sidebar-footer {
+    gap: 6px;
+    font-size: 7px;
+  }
+
+  .main-content {
+    padding: 27px 19px 35px;
+  }
+
+  .page-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .button {
+    min-height: 32px;
+    padding: 0 10px;
+    font-size: 9px;
+  }
+
+  .stay-overview {
+    gap: 4px;
+    min-height: 340px;
+    margin: 20px auto 26px;
+    padding: 12px 0 30px;
+  }
+
+  .receipt-card,
+  .welcome-card {
+    min-height: 255px;
+    padding: 17px 13px;
+  }
+
+  .receipt-heading h2 {
+    font-size: 17px;
+  }
+
+  .receipt-number {
+    font-size: 6px;
+  }
+
+  .stay-dates {
+    gap: 5px;
+    margin-top: 17px;
+    padding: 10px 0;
+  }
+
+  .date {
+    font-size: 20px;
+  }
+
+  .date-note {
+    font-size: 7px;
+  }
+
+  .receipt-lines {
+    gap: 6px;
+    padding: 11px 0 9px;
+    font-size: 7px;
+  }
+
+  .receipt-total strong {
+    font-size: 17px;
+  }
+
+  .receipt-label {
+    font-size: 6px;
+  }
+
+  .barcode {
+    width: 47px;
+    height: 18px;
+  }
+
+  .sun-illustration {
+    flex-basis: 34px;
+    width: 34px;
+    height: 60px;
+  }
+
+  .sun-illustration::before {
+    height: 50px;
+  }
+
+  .sun-illustration::after {
+    width: 50px;
+  }
+
+  .sun-illustration span {
+    width: 25px;
+    height: 25px;
+    border-width: 2px;
+  }
+
+  .welcome-kicker {
+    margin-bottom: 28px;
+    font-size: 6px;
+  }
+
+  .welcome-sun {
+    top: 13px;
+    right: 12px;
+    font-size: 24px;
+  }
+
+  .welcome-intro {
+    font-size: 11px;
+  }
+
+  .welcome-card h2 {
+    font-size: 25px;
+  }
+
+  .welcome-message {
+    font-size: 8px;
+  }
+
+  .welcome-room {
+    margin-top: 16px;
+  }
+
+  .info-grid {
+    gap: 10px;
+  }
+
+  .info-card {
+    min-height: 178px;
+    padding: 12px 10px;
+  }
+
+  .info-topline {
+    gap: 6px;
+  }
+
+  .info-icon {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
+  }
+
+  .info-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .info-category {
+    font-size: 7px;
+  }
+
+  .info-number {
+    font-size: 17px;
+  }
+
+  .info-card h2 {
+    margin-top: 12px;
+    font-size: 15px;
+  }
+
+  .info-description {
+    margin-top: 8px;
+    font-size: 9px;
+  }
+
+  .wifi-details p {
+    gap: 3px;
+    padding: 3px 4px;
+    font-size: 7px;
+  }
+
+  .wifi-details strong {
+    font-size: 7px;
+  }
+
+  .wifi-details p > span {
+    font-size: 6px;
+  }
+}
+
+@media (max-width: 560px) {
+  html,
+  body {
+    min-width: 0;
+  }
+
+  .guest-dashboard {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative;
+    z-index: 5;
+    height: auto;
+    flex-basis: auto;
+    min-height: 0;
+    padding: 12px 15px 8px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand {
+    min-height: 43px;
+    padding: 0 2px 8px;
+    font-size: 14px;
+  }
+
+  .brand-sun {
+    font-size: 21px;
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    overflow-x: auto;
+    margin: 0 -7px;
+    padding: 9px 7px 3px;
+    scrollbar-width: none;
+  }
+
+  .sidebar-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-link {
+    flex: 0 0 auto;
+    min-height: 34px;
+    padding: 0 8px;
+    font-size: 10px;
+  }
+
+  .weather-card,
+  .sidebar-footer {
+    display: none;
+  }
+
+  .main-content {
+    padding: 25px 16px 36px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .page-header h1 {
+    font-size: 34px;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .button {
+    min-height: 36px;
+    padding: 0 14px;
+    font-size: 10px;
+  }
+
+  .stay-overview {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    min-height: 0;
+    margin: 20px auto 24px;
+    padding: 6px 6px 30px;
+  }
+
+  .receipt-card,
+  .welcome-card {
+    min-height: 250px;
+    padding: 14px 10px;
+    transform: none;
+  }
+
+  .sun-illustration {
+    display: none;
+  }
+
+  .stay-overview:hover .receipt-card,
+  .stay-overview:hover .welcome-card {
+    transform: none;
+  }
+
+  .receipt-heading h2 {
+    font-size: 19px;
+  }
+
+  .stay-dates {
+    margin-top: 16px;
+    padding: 11px 0;
+  }
+
+  .date {
+    font-size: 23px;
+  }
+
+  .date-note {
+    font-size: 9px;
+  }
+
+  .receipt-lines {
+    gap: 7px;
+    padding: 12px 0 10px;
+    font-size: 9px;
+  }
+
+  .receipt-total strong {
+    font-size: 18px;
+  }
+
+  .receipt-label,
+  .receipt-number {
+    font-size: 7px;
+  }
+
+  .barcode {
+    width: 48px;
+    height: 18px;
+  }
+
+  .welcome-kicker {
+    margin-bottom: 28px;
+    font-size: 7px;
+  }
+
+  .welcome-sun {
+    top: 10px;
+    right: 9px;
+    font-size: 19px;
+  }
+
+  .welcome-intro {
+    font-size: 12px;
+  }
+
+  .welcome-card h2 {
+    margin-bottom: 8px;
+    font-size: 26px;
+  }
+
+  .welcome-message {
+    font-size: 10px;
+  }
+
+  .welcome-room {
+    margin-top: 16px;
+  }
+
+  .welcome-room span {
+    font-size: 7px;
+  }
+
+  .welcome-room strong {
+    font-size: 14px;
+  }
+
+  .info-grid {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .info-card {
+    flex: 0 1 auto;
+    min-height: 0;
+    padding: 16px;
+  }
+
+  .info-category {
+    font-size: 8px;
+  }
+
+  .info-card h2 {
+    font-size: 19px;
+  }
+
+  .info-subtitle {
+    font-size: 8px;
+  }
+
+  .info-description {
+    font-size: 11px;
+  }
+
+  .wifi-details p {
+    min-height: 29px;
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+
+  .wifi-details strong {
+    font-size: 9px;
+  }
+
+  .wifi-details p > span {
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 360px) {
+  .main-content {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .stay-overview {
+    gap: 2px;
+  }
+
+  .sun-illustration {
+    flex-basis: 20px;
+  }
+
+  .receipt-card,
+  .welcome-card {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .header-actions {
+    gap: 5px;
+  }
+
+  .button {
+    padding: 0 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  @page {
+    margin: 16mm;
+  }
+
+  body {
+    background: white;
+  }
+
+  .guest-dashboard {
+    display: block;
+  }
+
+  .sidebar,
+  .header-actions,
+  .sun-illustration,
+  .welcome-card,
+  .fan-hint,
+  .info-grid {
+    display: none !important;
+  }
+
+  .main-content {
+    width: 100%;
+    padding: 0;
+  }
+
+  .page-header {
+    margin-bottom: 24px;
+  }
+
+  .stay-overview {
+    display: block;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .receipt-card {
+    width: min(100%, 460px);
+    margin: 0 auto;
+    box-shadow: none;
+    transform: none;
+  }
+}
